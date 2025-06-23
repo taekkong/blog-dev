@@ -4,6 +4,7 @@ import com.blogdev.members.domain.Members;
 import com.blogdev.members.dto.LoginRequestDto;
 import com.blogdev.members.service.MembersService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,13 +20,15 @@ public class MembersController {
     }
 
     @PostMapping("/members")
-    public String login(@RequestBody LoginRequestDto loginRequestDto
+    public ResponseEntity<String> login(@RequestBody LoginRequestDto loginRequestDto
     ) {
-        String memberId=loginRequestDto.getMemberId();
-        String password=loginRequestDto.getPassword();
+        String result = membersService.login(loginRequestDto);
 
-        membersService.login(memberId,password);
+        return ResponseEntity.ok(result);
+    }
 
-        return "index";
+    @GetMapping("/members/new")
+    public String newMembers() {
+        return "newMembers";
     }
 }

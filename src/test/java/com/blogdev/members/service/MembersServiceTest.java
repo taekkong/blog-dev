@@ -1,6 +1,7 @@
 package com.blogdev.members.service;
 
 import com.blogdev.members.domain.Members;
+import com.blogdev.members.dto.LoginRequestDto;
 import com.blogdev.members.repository.MembersRepository;
 import com.blogdev.members.repository.MemoryMembersRepository;
 import org.assertj.core.api.Assertions;
@@ -8,6 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,11 +22,11 @@ class MembersServiceTest {
     @Test
     @DisplayName("회원가입 & 회원조회")
     void joinAndFind(){
-        membersService.join("오시온");
+        membersService.join("aa","bb");
 
-        Members member=membersService.findById(1);
+        String result = membersService.login(new LoginRequestDto("aa","bb"));
 
-        Assertions.assertThat(member.getName()).isEqualTo("오시온");
+        Assertions.assertThat(result).isEqualTo("로그인 되었습니다.");
     }
 
 
