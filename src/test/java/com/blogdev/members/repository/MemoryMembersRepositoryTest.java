@@ -8,11 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.*;
 
-@SpringBootTest
 public class MemoryMembersRepositoryTest {
-
-    @Autowired
-    MembersRepository membersRepository;
+    MembersRepository membersRepository=new MemoryMembersRepository();
 
     @Test
     @DisplayName("회원 저장 & 회원 조회")

@@ -15,6 +15,7 @@ public class MemoryMembersRepository implements MembersRepository {
     public void save(String name) {
         Members member = new Members(++lastId, name);
         members.put(member.getId(), member);
+        System.out.println("success Members save");
     }
 
     @Override
