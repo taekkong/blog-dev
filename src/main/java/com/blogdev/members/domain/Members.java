@@ -1,6 +1,11 @@
 package com.blogdev.members.domain;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Getter
 public class Members {
-    int id;
-    String name;
+    private final int id;
+    private final String name;
 }
