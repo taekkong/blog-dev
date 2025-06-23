@@ -7,5 +7,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public class Members {
     private final int id;
-    private final String name;
+    private final String memberId;
+    private final String password;
 }

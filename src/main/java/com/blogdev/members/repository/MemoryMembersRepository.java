@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class MemoryMembersRepository implements MembersRepository {
@@ -12,19 +13,25 @@ public class MemoryMembersRepository implements MembersRepository {
     private int lastId = 0;
 
     @Override
-    public void save(String name) {
-        Members member = new Members(++lastId, name);
+    public void save(String memberId,String password) {
+        Members member = new Members(++lastId, memberId, password);
         members.put(member.getId(), member);
         System.out.println("success Members save");
     }
 
     @Override
-    public Members findById(int id){
-        return members.get(id);
+    public Optional<Members> findByMemberId(String memberId){
+        for(Members m :members.values()){
+            if(m.getMemberId().equals(memberId)){
+                return Optional.of(m);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
     public int count() {
         return members.size();
     }
+
 }

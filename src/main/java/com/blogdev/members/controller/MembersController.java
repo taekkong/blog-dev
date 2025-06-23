@@ -1,6 +1,7 @@
 package com.blogdev.members.controller;
 
 import com.blogdev.members.domain.Members;
+import com.blogdev.members.dto.LoginRequestDto;
 import com.blogdev.members.service.MembersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,21 +14,18 @@ public class MembersController {
     private final MembersService membersService;
 
     @GetMapping("/members")
-    public String members(){
-        return "members";
-    }
-
-    @GetMapping("/members/{id}")
-    @ResponseBody
-    public String getMembers(@PathVariable int id){
-        Members member = membersService.findById(id);
-        return member.getName();
+    public String members() {
+        return "login";
     }
 
     @PostMapping("/members")
-    public String addMembers(@RequestParam String name) {
-        membersService.join(name);
+    public String login(@RequestBody LoginRequestDto loginRequestDto
+    ) {
+        String memberId=loginRequestDto.getMemberId();
+        String password=loginRequestDto.getPassword();
 
-        return "redirect:/index.html";
+        membersService.login(memberId,password);
+
+        return "index";
     }
 }
