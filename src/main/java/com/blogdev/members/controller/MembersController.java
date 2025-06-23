@@ -20,7 +20,7 @@ public class MembersController {
     }
 
     @PostMapping("/members")
-    public ResponseEntity<String> login(@RequestBody LoginRequestDto loginRequestDto
+    public ResponseEntity<String> login(LoginRequestDto loginRequestDto
     ) {
         String result = membersService.login(loginRequestDto);
 
@@ -30,5 +30,11 @@ public class MembersController {
     @GetMapping("/members/new")
     public String newMembers() {
         return "newMembers";
+    }
+
+    @PostMapping("/members/new")
+    public String signup(LoginRequestDto loginRequestDto) {
+        membersService.join(loginRequestDto);
+        return "index";
     }
 }

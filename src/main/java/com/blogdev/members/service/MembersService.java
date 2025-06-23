@@ -15,7 +15,10 @@ public class MembersService {
 
     private final MembersRepository membersRepository;
 
-    public void join(String memberId,String password){
+    public void join(LoginRequestDto loginRequestDto) {
+        String memberId=loginRequestDto.getMemberId();
+        String password=loginRequestDto.getPassword();
+
         membersRepository.save(memberId,password);
     }
 
