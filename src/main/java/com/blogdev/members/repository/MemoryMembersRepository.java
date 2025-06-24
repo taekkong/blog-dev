@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Repository
 public class MemoryMembersRepository implements MembersRepository {
     private Map<Integer, Members> members = new HashMap<>();
     private int lastId = 0;

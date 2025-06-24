@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-2 #생성될 컨테이너 이름
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234 #루트 계정 비밀번호
+      MYSQL_DATABASE: blog_db #처음에 생성할 DB 이름
+      MYSQL_USER: ktk #새로 만들 사용자 이름
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql #데이터 영속성 (컨테이너 꺼도 데이터 보존)
+    restart: always #재시작 정책
+
+volumes:
+  mysql-data:
