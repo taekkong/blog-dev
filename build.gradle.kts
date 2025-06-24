@@ -27,6 +27,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     //타임리프 의존성
     implementation ("org.springframework.boot:spring-boot-starter-thymeleaf")
+    //Spring Data JPA 의존성
+    implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")

@@ -1,5 +1,6 @@
 package com.blogdev.members.domain;
 
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
