@@ -16,9 +16,9 @@ public class MembersService {
 
     private final JpaMembersRepository jpaMembersRepository;
 
-    public void join(LoginRequestDto loginRequestDto) {
-        Members members=new  Members(loginRequestDto.getMemberId(),loginRequestDto.getPassword());
-        jpaMembersRepository.save(members);
+    public Members join(LoginRequestDto loginRequestDto) {
+        Members members=new Members(loginRequestDto.getMemberId(),loginRequestDto.getPassword());
+        return jpaMembersRepository.save(members);
     }
 
     public String login(LoginRequestDto loginRequestDto){

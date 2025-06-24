@@ -11,7 +11,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-@ActiveProfiles("mysql")
+@ActiveProfiles("h2")
 public class JpaMembersRepositoryTest {
     @Autowired
     JpaMembersRepository jpaMembersRepository;

@@ -36,6 +36,11 @@ out/
 ### VS Code ###
 .vscode/
 
-###DB###
+### DB ###
 test.mv.db
 test.trace.db
+
+
+### settings ###
+application-h2.yml
+application-mysql.yml
