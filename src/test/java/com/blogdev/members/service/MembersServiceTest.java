@@ -22,7 +22,8 @@ class MembersServiceTest {
     @Test
     @DisplayName("회원가입 & 회원조회")
     void joinAndFind(){
-        membersService.join("aa","bb");
+        LoginRequestDto longinRequestDto = new LoginRequestDto("aa", "bb");
+        membersService.join(longinRequestDto);
 
         String result = membersService.login(new LoginRequestDto("aa","bb"));
 

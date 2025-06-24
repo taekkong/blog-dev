@@ -48,10 +48,4 @@ class MembersControllerTest {
                 .andExpect(content().string("로그인 되었습니다."));
     }
 
-    @Test
-    @DisplayName("회원가입")
-    void singIn() throws Exception {
-        //given
-        String
-    }
 }

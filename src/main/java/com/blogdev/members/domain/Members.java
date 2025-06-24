@@ -1,13 +1,27 @@
 package com.blogdev.members.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Entity
 public class Members {
-    private final int id;
-    private final String memberId;
-    private final String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String memberId;
+    private String password;
+
+    public Members(String memberId, String password) {
+        this.memberId = memberId;
+        this.password = password;
+    }
+
 }
