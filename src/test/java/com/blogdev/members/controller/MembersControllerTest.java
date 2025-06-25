@@ -1,15 +1,17 @@
 package com.blogdev.members.controller;
 
+import com.blogdev.TestConfig;
 import com.blogdev.members.dto.LoginRequestDto;
 
 import com.blogdev.members.entity.Members;
 import com.blogdev.members.service.MembersService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -19,15 +21,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(MembersController.class)
-@AutoConfigureMockMvc
+@Import(TestConfig.class)
 class MembersControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
-    @MockBean
-    private MembersService membersService; //서비스 빈을 가짜(Mock)로 만듦 (테스트용으로만 동작하는 객체)
-    //진자로직 수행 x (직접 when().thenReturn()으로 행동 지정)
+    @Autowired
+    MembersService membersService;
 
     @Test
     @DisplayName("회원가입")
