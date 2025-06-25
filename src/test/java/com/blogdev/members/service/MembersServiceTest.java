@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -26,7 +28,6 @@ class MembersServiceTest {
     @Test
     @DisplayName("회원가입")
     void join(){
-        //given
         Members members1 = new Members("aa", "bb");
 
         when(jpaMembersRepository.save(any(Members.class))).thenReturn(members1);
@@ -34,6 +35,18 @@ class MembersServiceTest {
         Members members2 = membersService.join(new LoginRequestDto("aa", "bb"));
 
         Assertions.assertThat(members2).isEqualTo(members1);
+    }
+
+    @Test
+    @DisplayName("로그인")
+    void login(){
+        Members members1 = new Members("aa", "bb");
+
+        when(jpaMembersRepository.findByMemberId(any(String.class))).thenReturn(Optional.of(members1));
+
+        String result=membersService.login(new LoginRequestDto("aa", "bb"));
+
+        Assertions.assertThat(result).isEqualTo("로그인 되었습니다.");
     }
 
 
