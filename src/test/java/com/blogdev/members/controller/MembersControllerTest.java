@@ -2,6 +2,7 @@ package com.blogdev.members.controller;
 
 import com.blogdev.members.dto.LoginRequestDto;
 
+import com.blogdev.members.entity.Members;
 import com.blogdev.members.service.MembersService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,8 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(MembersController.class)
 @AutoConfigureMockMvc
@@ -30,12 +30,33 @@ class MembersControllerTest {
     //진자로직 수행 x (직접 when().thenReturn()으로 행동 지정)
 
     @Test
+    @DisplayName("회원가입")
+    void join() throws Exception{
+        String requestBody = """
+                {
+                    "memberId":"aa",
+                    "password":"bb"
+                }
+                """;
+
+        when(membersService.join(any(LoginRequestDto.class))).thenReturn(new Members("aa", "bb"));
+
+        mockMvc.perform(post("/members/new")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isOk())
+                .andExpect(view().name("index"));
+
+    }
+    @Test
     @DisplayName("로그인")
     void login() throws Exception {
         //given
         String requestBody = """
-                {"memberId":"Nct Wish",
-                "password":"Riku"}
+                {
+                    "memberId":"Nct Wish",
+                    "password":"Riku"
+                }
                 """;
 
         when(membersService.login(any(LoginRequestDto.class)))
