@@ -1,6 +1,5 @@
 package com.blogdev.members.controller;
 
-import com.blogdev.members.domain.Members;
 import com.blogdev.members.dto.LoginRequestDto;
 import com.blogdev.members.service.MembersService;
 import lombok.RequiredArgsConstructor;

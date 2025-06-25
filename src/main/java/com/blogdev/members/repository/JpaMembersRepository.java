@@ -1,6 +1,6 @@
 package com.blogdev.members.repository;
 
-import com.blogdev.members.domain.Members;
+import com.blogdev.members.entity.Members;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.blogdev.members.repository;
 
-import com.blogdev.members.domain.Members;
+import com.blogdev.members.entity.Members;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

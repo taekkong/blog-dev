@@ -1,10 +1,8 @@
 package com.blogdev.members.repository;
 
-import com.blogdev.members.domain.Members;
+import com.blogdev.members.entity.Members;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 

@@ -1,7 +1,6 @@
 package com.blogdev.members.repository;
 
-import com.blogdev.members.domain.Members;
-import org.springframework.stereotype.Repository;
+import com.blogdev.members.entity.Members;
 
 import java.util.HashMap;
 import java.util.Map;

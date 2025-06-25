@@ -1,6 +1,6 @@
 package com.blogdev.members.service;
 
-import com.blogdev.members.domain.Members;
+import com.blogdev.members.entity.Members;
 import com.blogdev.members.dto.LoginRequestDto;
 import com.blogdev.members.repository.JpaMembersRepository;
 import org.assertj.core.api.Assertions;

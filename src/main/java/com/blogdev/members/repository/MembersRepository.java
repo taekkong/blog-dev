@@ -1,8 +1,7 @@
 package com.blogdev.members.repository;
 
-import com.blogdev.members.domain.Members;
+import com.blogdev.members.entity.Members;
 
-import java.util.Map;
 import java.util.Optional;
 
 public interface MembersRepository {
