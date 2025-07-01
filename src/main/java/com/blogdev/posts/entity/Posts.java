@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.text.DateFormat;
@@ -20,14 +21,14 @@ public class Posts {
     private String title;
     private String content;
     private int authorId;
-    private LocalDate postDate;
+    private LocalDate createDate;
     private LocalDate modifyDate;
 
-    public Posts(String title, String content, int authorId, LocalDate postDate, LocalDate modifyDate) {
+    public Posts(String title, String content, int authorId, LocalDate createDate, LocalDate modifyDate) {
         this.title = title;
         this.content = content;
         this.authorId = authorId;
-        this.postDate = postDate;
+        this.createDate = createDate;
         this.modifyDate = modifyDate;
     }
 }
