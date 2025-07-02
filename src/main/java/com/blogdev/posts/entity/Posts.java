@@ -10,10 +10,12 @@ import lombok.NoArgsConstructor;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +23,10 @@ public class Posts {
     private String title;
     private String content;
     private int authorId;
-    private LocalDate createDate;
-    private LocalDate modifyDate;
+    private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
 
-    public Posts(String title, String content, int authorId, LocalDate createDate, LocalDate modifyDate) {
+    public Posts(String title, String content, int authorId, LocalDateTime createDate, LocalDateTime modifyDate) {
         this.title = title;
         this.content = content;
         this.authorId = authorId;
