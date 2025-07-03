@@ -6,6 +6,7 @@ import com.blogdev.posts.dto.RsPostsDto;
 import com.blogdev.posts.entity.Posts;
 import com.blogdev.posts.repository.PostsRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +56,16 @@ public class PostsService {
 
     public void deletePosts(int id){
         postsRepository.deleteById(id);
+    }
+
+    @Transactional //더티체킹으로 자동으로 DB에 반영되게 하기위함
+    public RsPostsDto modifyPosts(int id,RqPostsDto rqPostsDto){
+        Posts posts = postsRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Posts not found with id " + id)
+        );
+
+        posts.update(rqPostsDto.getTitle(),rqPostsDto.getContent(),LocalDateTime.now());
+
+        return new RsPostsDto(posts);
     }
 }

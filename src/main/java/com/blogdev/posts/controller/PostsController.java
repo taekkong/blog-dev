@@ -49,4 +49,16 @@ public class PostsController {
 
         return "index";
     }
+
+    @GetMapping("/posts/modify")
+    public String modifyPosts(){
+        return "modifyPosts";
+    }
+
+    @GetMapping("/posts/modify/{id}")
+    public String modifyPostsById(@PathVariable int id, RqPostsDto rqPostsDto) {
+        postsService.modifyPosts(id,rqPostsDto);
+
+        return "index";
+    }
 }

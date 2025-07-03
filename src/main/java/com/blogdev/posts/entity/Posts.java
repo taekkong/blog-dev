@@ -33,4 +33,10 @@ public class Posts {
         this.createDate = createDate;
         this.modifyDate = modifyDate;
     }
+
+    public void update(String title,String content,LocalDateTime modifyDate){
+        this.title = title;
+        this.content = content;
+        this.modifyDate = modifyDate;
+    }
 }
