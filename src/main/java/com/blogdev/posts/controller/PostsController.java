@@ -17,22 +17,7 @@ public class PostsController {
     @Autowired
     PostsService postsService;
 
-    @GetMapping("/posts/new")
-    public String newPosts() {
-        return "newPosts";
-    }
-
-    @PostMapping("/posts/new")
-    public String savePosts(RqPostsDto rqPostsDto){
-        postsService.save(rqPostsDto);
-        return "redirect:/";
-    }
-
-//    @GetMapping("/posts")
-//    public ResponseEntity<List<RsPostsDto>> getAllPosts() {
-//        return ResponseEntity.ok(postsService.getAllPosts());
-//    }
-
+    //홈 화면
     @GetMapping("/")
     public String getPostsTitles(Model model) {
         List<RqPostsListDto> posts=postsService.getAllPostsTitles();
@@ -41,10 +26,32 @@ public class PostsController {
         return "index";
     }
 
-    @GetMapping("/posts/{id}")
+    //글 작성 폼
+    @GetMapping("/posts/new")
+    public String newPosts() {
+        return "newPosts";
+    }
+
+    //글 작성
+    @PostMapping("/posts/new")
+    public String savePosts(RqPostsDto rqPostsDto){
+        postsService.save(rqPostsDto);
+        return "redirect:/";
+    }
+
+
+    /*@GetMapping("/posts/{id}")
     @ResponseBody
     public RsPostsDto getPosts(@PathVariable int id){
         return postsService.getPosts(id);
+    }*/
+
+    @GetMapping("/posts/{id}")
+    public String getPosts(@PathVariable int id, Model model) {
+        RsPostsDto rsPostsDto = postsService.getPosts(id);
+
+        model.addAttribute("posts",rsPostsDto);
+        return "getPosts";
     }
 
     @GetMapping("/posts/delete/{id}")

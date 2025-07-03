@@ -2,9 +2,11 @@ package com.blogdev.posts.dto;
 
 import com.blogdev.posts.entity.Posts;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+@Getter
 public class RsPostsDto {
     public int id;
     public String title;
