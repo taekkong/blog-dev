@@ -1,11 +1,13 @@
 package com.blogdev.posts.controller;
 
 import com.blogdev.posts.dto.RqPostsDto;
+import com.blogdev.posts.dto.RqPostsListDto;
 import com.blogdev.posts.dto.RsPostsDto;
 import com.blogdev.posts.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class PostsController {
     @PostMapping("/posts/new")
     public String savePosts(RqPostsDto rqPostsDto){
         postsService.save(rqPostsDto);
-        return "index";
+        return "redirect:/";
     }
 
 //    @GetMapping("/posts")
@@ -31,10 +33,12 @@ public class PostsController {
 //        return ResponseEntity.ok(postsService.getAllPosts());
 //    }
 
-    @GetMapping("/posts")
-    @ResponseBody
-    public List<RsPostsDto> getAllPosts() {
-        return postsService.getAllPosts();
+    @GetMapping("/")
+    public String getPostsTitles(Model model) {
+        List<RqPostsListDto> posts=postsService.getAllPostsTitles();
+
+        model.addAttribute("posts",posts);
+        return "index";
     }
 
     @GetMapping("/posts/{id}")

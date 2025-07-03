@@ -2,6 +2,7 @@ package com.blogdev.posts.service;
 
 import com.blogdev.members.dto.LoginRequestDto;
 import com.blogdev.posts.dto.RqPostsDto;
+import com.blogdev.posts.dto.RqPostsListDto;
 import com.blogdev.posts.dto.RsPostsDto;
 import com.blogdev.posts.entity.Posts;
 import com.blogdev.posts.repository.PostsRepository;
@@ -65,5 +66,12 @@ public class PostsService {
         posts.update(rqPostsDto.getTitle(),rqPostsDto.getContent(),LocalDateTime.now());
 
         return new RsPostsDto(posts);
+    }
+
+    public List<RqPostsListDto> getAllPostsTitles(){
+        return postsRepository.findAllByOrderByIdDesc().stream()
+                .map(post->new RqPostsListDto(post.getId(), post.getTitle()))
+                .toList();
+
     }
 }
