@@ -51,7 +51,7 @@ public class PostsController {
     public String deletePosts(@PathVariable int id){
         postsService.deletePosts(id);
 
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/posts/modify")
@@ -63,6 +63,6 @@ public class PostsController {
     public String modifyPostsById(@PathVariable int id, RqPostsDto rqPostsDto) {
         postsService.modifyPosts(id,rqPostsDto);
 
-        return "index";
+        return "redirect:/";
     }
 }

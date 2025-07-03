@@ -8,11 +8,15 @@
 <body class="h-screen">
 <div class="h-full">
     <div class="h-full flex flex-col justify-center items-center border border-blue-300 gap-10">
-        <div class="h-[75%] w-[60%] border border-red-500">
-            <h1>게시글</h1>
+        <div class="h-[75%] w-[60%] border border-red-500 p-3">
+            <h3 class="mb-24">게시글</h3>
             <ul>
-                <li th:each="post : ${posts}"> <!--타임리프 반복문 문법-->
-                    <a th:href="@{|/posts/${post.id()}|}" th:text="${post.title()}"></a>
+                <li th:each="post : ${posts}">
+                    <span th:text="${post.id()} " class="text-xl"></span>
+                    <!--타임리프 반복문 문법-->
+                    <a th:href="@{|/posts/${post.id()}|}"
+                       th:text="${post.title()}"
+                       class="text-gray-300 underline text-xl hover:text-gray-400"></a>
                 </li>
             </ul>
         </div>
