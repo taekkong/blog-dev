@@ -61,13 +61,16 @@ public class PostsController {
         return "redirect:/";
     }
 
-    @GetMapping("/posts/modify")
-    public String modifyPosts(){
+    @GetMapping("/posts/modify/{id}")
+    public String modifyPostsById(@PathVariable int id, Model model) {
+        RsPostsDto rsPostsDto = postsService.getPosts(id);
+
+        model.addAttribute("posts",rsPostsDto);
         return "modifyPosts";
     }
 
-    @GetMapping("/posts/modify/{id}")
-    public String modifyPostsById(@PathVariable int id, RqPostsDto rqPostsDto) {
+    @PostMapping("/posts/modify/{id}")
+    public String modifyPosts(@PathVariable int id,RqPostsDto rqPostsDto){
         postsService.modifyPosts(id,rqPostsDto);
 
         return "redirect:/";

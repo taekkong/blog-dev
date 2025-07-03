@@ -14,6 +14,10 @@
         <div th:text="${posts.content}"
                   class="p-3 border border-2 border-gray-200 rounded
                       resize-none w-[60%] h-[60%]"></div>
+
+        <a th:href="@{/posts/modify/{id}(id=${posts.id})}">
+            <button type="button" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow">글 수정</button>
+        </a>
     </div>
 </div>
 </body>
