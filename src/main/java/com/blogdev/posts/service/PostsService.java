@@ -26,10 +26,8 @@ public class PostsService {
         String title = rqPostsDto.getTitle();
         String content=rqPostsDto.getContent();
         int authorId=1;
-        LocalDateTime createDate=LocalDateTime.now();
-        LocalDateTime modifyDate=LocalDateTime.now();
 
-        Posts posts=new Posts(title,content,authorId,createDate,modifyDate);
+        Posts posts=new Posts(title,content,authorId);
         return posts;
     }
 

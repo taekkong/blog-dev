@@ -1,12 +1,12 @@
 package com.blogdev.posts.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@EntityListeners(AuditingEntityListener.class) //엔티티에서 감시 이벤트를 감지하도록 등록
 public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,20 +24,19 @@ public class Posts {
     private String title;
     private String content;
     private int authorId;
+    @CreatedDate
     private LocalDateTime createDate;
+    @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    public Posts(String title, String content, int authorId, LocalDateTime createDate, LocalDateTime modifyDate) {
+    public Posts(String title, String content, int authorId) {
         this.title = title;
         this.content = content;
         this.authorId = authorId;
-        this.createDate = createDate;
-        this.modifyDate = modifyDate;
     }
 
     public void update(String title,String content,LocalDateTime modifyDate){
         this.title = title;
         this.content = content;
-        this.modifyDate = modifyDate;
     }
 }
