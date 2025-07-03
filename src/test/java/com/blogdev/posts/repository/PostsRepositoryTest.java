@@ -24,7 +24,7 @@ class PostsRepositoryTest {
     @Test
     @DisplayName("글 작성후 저장")
     void save(){
-        Posts posts1 = new Posts("제목1","내용1",10, LocalDate.now(),LocalDate.now());
+        Posts posts1 = new Posts("제목1","내용1",10);
 
         Posts posts2 = postsRepository.save(posts1);
 

@@ -28,10 +28,10 @@ class PostsServiceTest {
     @Test
     @DisplayName("글 저장")
     void save(){
-        Posts posts1 = new Posts("제목1", "내용1", 1, LocalDate.now(), LocalDate.now());
+        Posts posts1 = new Posts("제목1", "내용1", 1);
 
         when(postsRepository.save(any(Posts.class))).thenReturn(posts1);
-        Posts posts2 = postsService.save(new RqPostsDto("제목1","내용1",1,LocalDate.now(),LocalDate.now()));
+        Posts posts2 = postsService.save(new RqPostsDto("제목1","내용1"));
 
         Assertions.assertThat(posts2).isEqualTo(posts1);
     }

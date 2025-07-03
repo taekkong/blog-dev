@@ -5,17 +5,27 @@
     <title>홈</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<a href="/members">
-    <button type="button" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow">로그인</button>
-</a>
+<body class="h-screen">
+<div class="h-full">
+    <div class="h-full flex flex-col justify-center items-center border border-blue-300 gap-10">
+        <div class="h-[75%] w-[60%] border border-red-500">
+        </div>
 
-<a href="/posts/new">
-    <button type="button" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow">글 작성</button>
-</a>
+        <div>
+            <a href="/members">
+                <button type="button" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow">로그인</button>
+            </a>
 
-<a href="/posts/modify">
-    <button type="button" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow">글 수정</button>
-</a>
+            <a href="/posts/new">
+                <button type="button" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow">글 작성</button>
+            </a>
+
+            <a href="/posts/modify">
+                <button type="button" class="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow">글 수정</button>
+            </a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
