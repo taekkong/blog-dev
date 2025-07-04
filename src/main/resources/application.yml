@@ -10,6 +10,8 @@ spring:
         format_sql: true # sql 예쁘게 출력
         highlight_sql: true
         use_sql_comments: true
+  profiles:
+    active: h2
 
 logging:
   level:

@@ -1,5 +1,6 @@
 package com.blogdev;
 
+import com.blogdev.members.repository.MembersRepository;
 import com.blogdev.members.service.MembersService;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -13,4 +14,5 @@ public class TestConfig {
         return Mockito.mock(MembersService.class);
 
     }
+
 }
