@@ -1,4 +1,4 @@
 package com.blogdev.posts.dto;
 
-public record RqPostsListDto (int id,String title){
+public record RqPostsListDto (Long id,String title){
 }

@@ -1,5 +1,6 @@
 package com.blogdev.posts.service;
 
+import com.blogdev.members.entity.Members;
 import com.blogdev.posts.dto.RqPostsDto;
 import com.blogdev.posts.entity.Posts;
 import com.blogdev.posts.repository.PostsRepository;
@@ -28,7 +29,7 @@ class PostsServiceTest {
     @Test
     @DisplayName("글 저장")
     void save(){
-        Posts posts1 = new Posts("제목1", "내용1", 1);
+        Posts posts1 = new Posts("제목1", "내용1", new Members("aa","aa"));
 
         when(postsRepository.save(any(Posts.class))).thenReturn(posts1);
         Posts posts2 = postsService.save(new RqPostsDto("제목1","내용1"));

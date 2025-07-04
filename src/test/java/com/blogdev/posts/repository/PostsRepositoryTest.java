@@ -1,5 +1,6 @@
 package com.blogdev.posts.repository;
 
+import com.blogdev.members.entity.Members;
 import com.blogdev.posts.entity.Posts;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
@@ -24,7 +25,7 @@ class PostsRepositoryTest {
     @Test
     @DisplayName("글 작성후 저장")
     void save(){
-        Posts posts1 = new Posts("제목1","내용1",10);
+        Posts posts1 = new Posts("제목1","내용1",new Members("aa","aa"));
 
         Posts posts2 = postsRepository.save(posts1);
 

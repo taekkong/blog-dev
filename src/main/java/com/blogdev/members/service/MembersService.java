@@ -2,7 +2,8 @@ package com.blogdev.members.service;
 
 import com.blogdev.members.entity.Members;
 import com.blogdev.members.dto.LoginRequestDto;
-import com.blogdev.members.repository.JpaMembersRepository;
+import com.blogdev.members.repository.MembersRepository;
+import com.blogdev.members.repository.MembersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MembersService {
 
-    private final JpaMembersRepository jpaMembersRepository;
+    private final MembersRepository membersRepository;
 
     private Members toEntity(LoginRequestDto loginRequestDto) {
         String memberId=loginRequestDto.getMemberId();
@@ -24,12 +25,12 @@ public class MembersService {
     public Members join(LoginRequestDto loginRequestDto) {
         Members members=toEntity(loginRequestDto);
 
-        return jpaMembersRepository.save(members);
+        return membersRepository.save(members);
     }
 
     public String login(LoginRequestDto loginRequestDto){
         Members members=toEntity(loginRequestDto);
-        Optional<Members> members1 = jpaMembersRepository.findByMemberId((members.getMemberId()));
+        Optional<Members> members1 = membersRepository.findById(members.getId());
 
         if(members1.isEmpty()){
             return "해당 아이디가 존재하지 않습니다.";

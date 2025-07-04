@@ -1,11 +1,7 @@
 package com.blogdev.members.repository;
 
 import com.blogdev.members.entity.Members;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-
-public interface MembersRepository {
-    public void save(String memberId,String  password);
-    public Optional<Members> findByMemberId(String memberId);
-    public int count();
+public interface MembersRepository extends JpaRepository<Members, Long> {
 }

@@ -1,6 +1,6 @@
 package com.blogdev.posts.service;
 
-import com.blogdev.members.dto.LoginRequestDto;
+import com.blogdev.members.entity.Members;
 import com.blogdev.posts.dto.RqPostsDto;
 import com.blogdev.posts.dto.RqPostsListDto;
 import com.blogdev.posts.dto.RsPostsDto;
@@ -11,10 +11,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,10 +23,10 @@ public class PostsService {
 
     public Posts toEntity(RqPostsDto rqPostsDto){
         String title = rqPostsDto.getTitle();
-        String content=rqPostsDto.getContent();
-        int authorId=1;
+        String content = rqPostsDto.getContent();
+        Members author=new Members("aa","aa");
 
-        Posts posts=new Posts(title,content,authorId);
+        Posts posts=new Posts(title,content,author);
         return posts;
     }
 
